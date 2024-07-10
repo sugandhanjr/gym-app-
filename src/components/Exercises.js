@@ -7,7 +7,7 @@ import ExercisesCard from './ExerciseCard'
 
 
 const Exercises = ({ exercises, setExercises, bodyPart }) => {
-  console.log(exercises)
+  console.log(exercises,"sssssssssssss")
 
   return (
     <Box id="exercises"
