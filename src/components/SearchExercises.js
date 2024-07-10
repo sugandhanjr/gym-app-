@@ -1,18 +1,18 @@
 import React, {  useEffect, useState } from 'react';
 import { Box, Button, Stack, TextField, Typography } from '@mui/material';
 
-import { exerciseOptions, fetchdata } from '../utils/fetchData';
+import { exerciseOptions, fetchData } from '../utils/fetchData';
 import HorizontalScrollbar from './HorizontalScrollbar';
 import BodyPart from './BodyPart';
 
 const SearchExercises = () => {
   const [search, setsearch] = useState('')
-  const [ exercise, setExercises] = useState([]);
-  const [ bodypart, setBodyParts] = useState([])
+  const [ exercises, setExercises] = useState([]);
+  const [ bodyPart, setBodyParts] = useState([])
 
 useEffect(() => {
   const fetchExercisesData = async () => {
-    const bodypartdata = await fetchdata('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', exerciseOptions);
+    const bodypartdata = await fetchData('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', exerciseOptions);
 
     setBodyParts(['all', ...bodypartdata]);
   }
@@ -21,13 +21,13 @@ useEffect(() => {
 },[])
  const handleSearch =  async () => {
       if(search){
-        const exercisedata = await fetchdata (' https://exercisedb.p.rapidapi.com/ exercises', exerciseOptions);
+        const exercisedata = await fetchData (' https://exercisedb.p.rapidapi.com/ exercises', exerciseOptions);
         
         const SearchExercises = exercisedata.filter( 
-          (exercise) => exercise.name.tolowercase().includes(search)
-          || exercise.target.tolowercase().includes(search)
-          || exercise.equipment.tolowercase().includes(search)
-          || exercise.bodypart.tolowercase().includes(search)
+          (exercise) => exercise.name.toLowerCase().includes(search)
+          || exercise.target.toLowerCase().includes(search)
+          || exercise.equipment.toLowerCase().includes(search)
+          || exercise.bodypart.toLowerCase().includes(search)
         );
 
         setsearch('');
@@ -57,7 +57,7 @@ useEffect(() => {
           }}
           height="76px"
           value={search}
-          onChange= {(e) => setsearch(e.target.value.tolowercase())}
+          onChange= {(e) => setsearch(e.target.value.toLowerCase())}
           placeholder="Search Exercises"
           type="text"
           
@@ -82,7 +82,7 @@ useEffect(() => {
 
         </Box>
           <Box sx={{ position: 'relative', width: '100%', p: '20px'}}>
-            <HorizontalScrollbar data={ bodypart } bodypart={BodyPart} setBodyPart={setBodyParts}/>
+            <HorizontalScrollbar data={ bodyPart } bodyPart={BodyPart} setBodyPart={setBodyParts}/>
         </Box>
 
     </Stack>
