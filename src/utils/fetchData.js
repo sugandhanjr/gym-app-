@@ -1,10 +1,7 @@
 export const exerciseOptions =  {
-	method: 'GET',
-	hostname: 'exercisedb.p.rapidapi.com',
-	port: null,
-	path: '/status',
+	method: 'GET', 
 	headers: {
-		'x-rapidapi-key': ProcessingInstruction.env. REACT_APP_RAPID_API_KEY
+		'x-rapidapi-key': process.env. REACT_APP_RAPID_API_KEY,
 		'x-rapidapi-host': 'exercisedb.p.rapidapi.com'
 	}
 };
